@@ -278,6 +278,10 @@ Decidim.configure do |config|
   # Defines the name of the cookie used to check if the user allows Decidim to
   # set cookies.
   # config.consent_cookie_name = "decidim-cc"
+
+  if ENV["HEROKU_APP_NAME"].present?
+    config.base_uploads_path = ENV["HEROKU_APP_NAME"] + "/"
+  end
 end
 
 Rails.application.config.i18n.available_locales = Decidim.available_locales
